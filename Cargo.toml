@@ -13,7 +13,7 @@ keywords = ["playdate", "gamedev", "no_std"]
 default = []
 
 [dependencies]
-playdate-sys = { version = "0.2.11", default-features = false, features = ["entry-point"] }
+playdate-sys = { version = "0.2.11", default-features = false, features = ["entry-point", "allocator", "lang-items"] }
 
 [dev-dependencies]
 rstest = { version = "0.18.2", default-features = false }
@@ -38,3 +38,7 @@ panic = "abort"
 
 [profile.release]
 panic = "abort"
+
+[[example]]
+name = "minimal"
+crate-type = ["staticlib", "cdylib"]
