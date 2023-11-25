@@ -5,7 +5,7 @@ license = "Unlicense"
 authors = ["Jonathan Cornaz"]
 edition = "2021"
 repository = "https://github.com/jcornaz/crankit-game-loop"
-description = "An ergonomic image API for the playdate"
+description = "A safe and ergonomic entry-point for playdate games using `playdate-sys`"
 categories = ["api-bindings", "game-development", "no-std"]
 keywords = ["playdate", "gamedev", "no_std"]
 
