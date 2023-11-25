@@ -1,0 +1,41 @@
+[package]
+name = "crankit-game-loop"
+version = "0.0.0"
+license = "Unlicense"
+authors = ["Jonathan Cornaz"]
+edition = "2021"
+repository = "https://github.com/jcornaz/crankit-game-loop"
+description = "An ergonomic image API for the playdate"
+categories = ["api-bindings", "game-development", "no-std"]
+keywords = ["playdate", "gamedev", "no_std"]
+
+[features]
+default = []
+playdate-sys-v02 = ["dep:playdate-sys-v02"]
+
+[dependencies]
+playdate-sys-v02 = { package = "playdate-sys", version = "0.2.11", default-features = false, optional = true }
+
+[dev-dependencies]
+rstest = { version = "0.18.2", default-features = false }
+
+[lints.rust]
+
+[lints.clippy]
+exhaustive_enums = "deny"
+exhaustive_structs = "deny"
+pedantic = "warn"
+
+[package.metadata.docs.rs]
+all-features = false
+no-default-features = true
+rustdoc-args = ["--cfg", "docsrs"]
+
+[package.metadata.playdate]
+bundle-id = "com.github.jcornaz.crankit-game-loop"
+
+[profile.dev]
+panic = "abort"
+
+[profile.release]
+panic = "abort"
