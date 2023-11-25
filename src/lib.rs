@@ -1,6 +1,23 @@
 #![no_std]
 
 //! A safe and ergonomic entry-point for playdate games.
+//!
+//! To use this crate, implement the [`Game`] trait, and call the [`game_loop!`] macro.
+//!
+//! ## Examples
+//!
+//! ```
+//! struct MyGame;
+//! impl crankit_game_loop::Game for MyGame {
+//!    fn new(_playdate: &crankit_game_loop::ffi::PlaydateAPI) -> Self {
+//!        // Initialize your game here
+//!       Self
+//!    }
+//!    fn update(&mut self, _playdate: &crankit_game_loop::ffi::PlaydateAPI) {
+//!       // Update and render your game here
+//!    }
+//! }
+//! ```
 
 pub mod ffi {
     pub use playdate_sys::{
@@ -10,7 +27,15 @@ pub mod ffi {
 }
 
 pub trait Game {
+    /// Invoked once at startup
+    ///
+    /// This is a good place to load images/sounds, initialize the game state
+    /// As well as configuring the game (i.e. FPS)
     fn new(playdate: &ffi::PlaydateAPI) -> Self;
+
+    /// Invoked every frame
+    ///
+    /// This is where you update you game state and render the new frame.
     fn update(&mut self, playdate: &ffi::PlaydateAPI);
 }
 
