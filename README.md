@@ -10,8 +10,10 @@ A safe and ergonomic entry-point for playdate games using [playdate-sys](https:/
 ## Maintenance status
 
 I made this project for my personal use. I'll be happy if it can be useful to anyone else, but there are a few things to keep in mind:
-* I only write documentation for my "future self", which may not be enough for people who are not in my head. But I do welcome contributions to clarify and improve the documentation.
-* The project may never be "feature complete" as I only add new features when I need them. But I do welcome suggestions and contributions for new features.
+* I only write documentation for my "future self", which may not be enough for people who are not in my head.
+* The project may never be "feature complete" as I only add new features when I need them.
+
+That being said, I also welcome suggestions and contributions.
 
 
 ## Alternatives
