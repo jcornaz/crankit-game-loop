@@ -7,16 +7,24 @@
 //! ## Examples
 //!
 //! ```
-//! struct MyGame;
-//! impl crankit_game_loop::Game for MyGame {
-//!    fn new(_playdate: &crankit_game_loop::ffi::PlaydateAPI) -> Self {
-//!        // Initialize your game here
-//!       Self
-//!    }
-//!    fn update(&mut self, _playdate: &crankit_game_loop::ffi::PlaydateAPI) {
-//!       // Update and render your game here
-//!    }
+//! #![no_std]
+//! 
+//! use crankit_game_loop::{game_loop, Game, Playdate};
+//! 
+//! pub struct MyGame;
+//! 
+//! impl Game for MyGame {
+//!     fn new(_playdate: &Playdate) -> Self {
+//!         // Initialize your game state here
+//!         Self
+//!     }
+//! 
+//!     fn update(&mut self, _: &Playdate) {
+//!         // Update your game state here
+//!     }
 //! }
+//! 
+//! game_loop!(MyGame);
 //! ```
 
 pub mod ffi {
