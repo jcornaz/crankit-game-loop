@@ -1,8 +1,7 @@
 set dotenv-load
 
 # Perform all verifications (compile, test, lint, etc.)
-verify:
-	cargo hack check --feature-powerset
+verify: test lint doc
 
 # Watch the source files and run `just verify` when source changes
 watch:
@@ -10,14 +9,12 @@ watch:
 
 # Run the tests
 test:
-	cargo hack test --tests --feature-powerset 
-	cargo test --examples --all-features
-	cargo test --doc --all-features
+	cargo hack check --feature-powerset 
 
 # Run the static code analysis
 lint:
 	cargo fmt -- --check
-	cargo hack clippy --each-feature --all-targets
+	cargo hack clippy --each-feature
 
 run-example example="minimal":
 	cargo playdate run --example {{example}}
