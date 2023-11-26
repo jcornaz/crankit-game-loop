@@ -32,9 +32,29 @@ pub mod ffi {
 
 #[non_exhaustive]
 pub struct Playdate {
-    pub playdate: &'static ffi::PlaydateAPI,
+    pub api: &'static ffi::PlaydateAPI,
     pub system: &'static ffi::System,
     pub graphics: &'static ffi::Graphics,
+}
+
+impl Playdate {
+    /// Create from raw pointer
+    ///
+    /// # Safety
+    ///
+    /// The pointer must be a real, valid playdate API
+    #[must_use]
+    #[allow(clippy::missing_panics_doc)]
+    pub unsafe fn from_ptr(api: core::ptr::NonNull<ffi::PlaydateAPI>) -> Self {
+        let api = api.as_ref();
+        let system = api.system.as_ref().unwrap();
+        let graphics = api.graphics.as_ref().unwrap();
+        Self {
+            api,
+            system,
+            graphics,
+        }
+    }
 }
 
 pub trait Game {
@@ -42,22 +62,23 @@ pub trait Game {
     ///
     /// This is a good place to load images/sounds, initialize the game state
     /// As well as configuring the game (i.e. FPS)
-    fn new(playdate: &ffi::PlaydateAPI) -> Self;
+    fn new(playdate: &Playdate) -> Self;
 
     /// Invoked every frame
     ///
     /// This is where you update you game state and render the new frame.
-    fn update(&mut self, playdate: &ffi::PlaydateAPI);
+    fn update(&mut self, playdate: &Playdate);
 }
 
 #[macro_export]
 macro_rules! game_loop {
     ($game_type:tt) => {
         mod __playdate_game {
-            static mut PLAYDATE: Option<&'static $crate::ffi::PlaydateAPI> = None;
+            static mut PLAYDATE: Option<$crate::Playdate> = None;
             static mut GAME: Option<super::$game_type> = None;
 
             #[no_mangle]
+            #[allow(clippy::no_mangle_with_rust_abi)]
             fn event_handler(
                 api: core::ptr::NonNull<$crate::ffi::PlaydateAPI>,
                 event: $crate::ffi::SystemEvent,
@@ -65,10 +86,10 @@ macro_rules! game_loop {
             ) -> $crate::ffi::EventLoopCtrl {
                 if event == $crate::ffi::SystemEvent::kEventInit {
                     unsafe {
-                        let api = api.as_ref();
-                        PLAYDATE = Some(api);
-                        GAME = Some($crate::Game::new(api));
-                        (*api.system).setUpdateCallback.unwrap()(
+                        let playdate = $crate::Playdate::from_ptr(api);
+                        GAME = Some($crate::Game::new(&playdate));
+                        PLAYDATE = Some(playdate);
+                        (*api.as_ref().system).setUpdateCallback.unwrap()(
                             Some(update),
                             core::ptr::null_mut(),
                         );
@@ -79,7 +100,7 @@ macro_rules! game_loop {
 
             extern "C" fn update(_user_data: *mut core::ffi::c_void) -> i32 {
                 unsafe {
-                    let playdate = PLAYDATE.as_ref().unwrap();
+                    let playdate: &$crate::Playdate = PLAYDATE.as_ref().unwrap();
                     $crate::Game::update(GAME.as_mut().unwrap(), playdate);
                 };
                 1

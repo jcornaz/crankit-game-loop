@@ -1,15 +1,15 @@
 #![no_std]
 
-use crankit_game_loop::{game_loop, Game};
+use crankit_game_loop::{game_loop, Game, Playdate};
 
 pub struct MyGame;
 
 impl Game for MyGame {
-    fn new(_: &crankit_game_loop::ffi::PlaydateAPI) -> Self {
+    fn new(_: &Playdate) -> Self {
         Self
     }
 
-    fn update(&mut self, _: &crankit_game_loop::ffi::PlaydateAPI) {}
+    fn update(&mut self, _: &Playdate) {}
 }
 
 game_loop!(MyGame);

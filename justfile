@@ -9,7 +9,9 @@ watch:
 
 # Run the tests
 test:
-	cargo hack check --feature-powerset 
+	cargo hack check --feature-powerset
+	cargo check --examples
+	cargo playdate build --example minimal
 
 # Run the static code analysis
 lint:
