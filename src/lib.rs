@@ -20,10 +20,21 @@
 //! ```
 
 pub mod ffi {
+    //! Re-exports from the crate [playdate-sys](https://docs.rs/playdate-sys)
     pub use playdate_sys::{
-        ffi::{PDSystemEvent as SystemEvent, PlaydateAPI},
+        ffi::{
+            playdate_graphics as Graphics, playdate_sys as System, PDSystemEvent as SystemEvent,
+            PlaydateAPI,
+        },
         ll_symbols, EventLoopCtrl,
     };
+}
+
+#[non_exhaustive]
+pub struct Playdate {
+    pub playdate: &'static ffi::PlaydateAPI,
+    pub system: &'static ffi::System,
+    pub graphics: &'static ffi::Graphics,
 }
 
 pub trait Game {
