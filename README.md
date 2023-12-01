@@ -2,7 +2,6 @@
 
 [![License](https://img.shields.io/crates/l/crankit-game-loop)](#Unlicense)
 [![Crates.io](https://img.shields.io/crates/v/crankit-game-loop)](https://crates.io/crates/crankit-game-loop)
-[![Docs](https://docs.rs/impacted/badge.svg)](https://docs.rs/crankit-game-loop)
 
 A safe and ergonomic entry-point for playdate games using [playdate-sys](https://docs.rs/playdate-sys).
 
