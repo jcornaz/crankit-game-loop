@@ -17,5 +17,5 @@ Fix example in root module
 * `Playdate` struct
 * `game_loop!` macro
 
-[Unreleased]: https://github.com/jcornaz/beancount_parser_2/compare/v0.1.0...HEAD
-[0.1.0]: https://github.com/jcornaz/beancount_parser_2/compare/...v0.1.0
+[Unreleased]: https://github.com/jcornaz/crankit-game-loop/compare/v0.1.0...HEAD
+[0.1.0]: https://github.com/jcornaz/crankit-game-loop/compare/...v0.1.0
