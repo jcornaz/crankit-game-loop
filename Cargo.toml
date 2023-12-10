@@ -9,6 +9,9 @@ description = "A safe and ergonomic entry-point for playdate games using `playda
 categories = ["api-bindings", "game-development", "no-std"]
 keywords = ["playdate", "gamedev", "no_std"]
 
+[badges.maintenance]
+status = "actively-developed"
+
 [features]
 default = []
 
