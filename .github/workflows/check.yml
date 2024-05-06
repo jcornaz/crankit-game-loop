@@ -16,7 +16,7 @@ jobs:
         with:
           components: clippy, rustfmt
           targets: thumbv7em-none-eabihf
-      - uses: pd-rs/get-playdate-sdk@0.3.4
+      - uses: pd-rs/get-playdate-sdk@0.3.5
         with:
           version: 2.1.1
       - uses: Swatinem/rust-cache@v2
@@ -38,7 +38,7 @@ jobs:
         with:
           components: clippy, rustfmt
           targets: thumbv7em-none-eabihf
-      - uses: pd-rs/get-playdate-sdk@0.3.4
+      - uses: pd-rs/get-playdate-sdk@0.3.5
         with:
           version: 2.1.1
       - uses: Swatinem/rust-cache@v2
