@@ -3,6 +3,7 @@
   "extends": ["config:recommended"],
   "timezone": "Europe/Zurich",
   "schedule": ["after 10pm", "before 5:00am"],
+  "enabled": false,
   "packageRules": [
     {
       "matchCurrentVersion": ">=1.0.0",
