@@ -23,8 +23,8 @@ jobs:
       - uses: taiki-e/install-action@v2
         with:
           tool: cargo-hack@0.6,just@1,cargo-msrv@0.15
-      - run: cargo install playdate-bindgen@0.1 --features cli
-      - run: cargo install cargo-playdate@0.3
+      - run: cargo install playdate-bindgen --version ^0.1 --features cli
+      - run: cargo install cargo-playdate --version ^0.3
       - run: just verify
   lint:
     runs-on: ubuntu-latest
@@ -45,5 +45,5 @@ jobs:
       - uses: taiki-e/install-action@v2
         with:
           tool: cargo-hack,just,cargo-deny
-      - run: cargo install playdate-bindgen@0.1 --features cli
+      - run: cargo install playdate-bindgen --version ^0.1 --features cli
       - run: just lint doc
