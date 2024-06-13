@@ -7,6 +7,9 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [Unreleased]
 
+
+## [0.2.0] - 2024-06-13
+
 ### Breaking changes
 
 * require `playdate-sys` version `0.4.2`
@@ -21,5 +24,6 @@ Fix example in root module
 * `Playdate` struct
 * `game_loop!` macro
 
-[Unreleased]: https://github.com/jcornaz/crankit-game-loop/compare/v0.1.0...HEAD
+[Unreleased]: https://github.com/jcornaz/crankit-game-loop/compare/v0.2.0...HEAD
+[0.2.0]: https://github.com/jcornaz/crankit-game-loop/compare/v0.1.0...v0.2.0
 [0.1.0]: https://github.com/jcornaz/crankit-game-loop/compare/...v0.1.0

@@ -1,6 +1,6 @@
 [package]
 name = "crankit-game-loop"
-version = "0.1.0"
+version = "0.2.0"
 license = "Unlicense"
 authors = ["Jonathan Cornaz"]
 edition = "2021"
