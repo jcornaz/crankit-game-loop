@@ -7,6 +7,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [Unreleased]
 
+### Breaking changes
+
+* require `playdate-sys` version `0.4.2`
+
 ### Documentation
 
 Fix example in root module
