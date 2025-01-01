@@ -19,7 +19,7 @@ default = []
 playdate-sys = { version = "0.4.2", default-features = false, features = ["entry-point", "allocator", "lang-items"] }
 
 [dev-dependencies]
-rstest = { version = "0.23.0", default-features = false }
+rstest = { version = "0.24.0", default-features = false }
 
 [lints.rust]
 
